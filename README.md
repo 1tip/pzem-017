@@ -1,4 +1,4 @@
-## Easy MOD pzem-017
+## Easy MOD pzem-017  DC Power Meter
 
 ※ 경고 : 개조작업에 따른 책임은 당신에게 있음    ;-)
 
