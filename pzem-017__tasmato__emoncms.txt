@@ -1,0 +1,42 @@
+
+
+
+1. Set GPIO on ESP8266
+
+Main Manu - Configuration - Configure Module - Generic(18)
+
+GPIO		Function
+-----------------------------
+D2 GPIO4	PZEM0XX Tx
+D1 GPIO5	PZEM017 Rx
+
+
+
+
+
+2. Set Rule1 and Turn on 
+
+Main Manu - Consoles - Console - (Enter command)
+
+
+-------------------------
+# Setting Rule1 command
+Rule1
+ON energy#voltage DO WEBSEND [my.site.com:80] /emoncms/input/post.json?node=pzem&json={V:%value%}&apikey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ENDON
+
+# Rule1 turn on command
+Rule1 ON
+
+-------------------------
+
+
+
+Rule1
+ON ENERGY#Voltage DO Var1 %value% ENDON
+ON ENERGY#Current DO Var2 %value% ENDON
+ON ENERGY#Power DO Var3 %value% ENDON
+ON ENERGY#Today DO Var4 %value% ENDON
+ON ENERGY#Yesterday DO Var5 %value% ENDON
+ON ENERGY#Total DO Var6 %value% ENDON
+ON tele-ENERGY DO WEBSEND [my.site.com:80] /emoncms/input/post.json?node=pzem&json={Voltage:%Var1%,Current:%Var2%,Power:%Var3%,Today:%Var4%,Yesterday:%Var5%,Total:%Var4%}&apikey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ENDON
+Rule1 on
