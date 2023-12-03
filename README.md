@@ -73,11 +73,50 @@ ON tele-ENERGY DO WEBSEND [my.site.com:80] /emoncms/input/post.json?node=pzem&js
 Rule1 on
 ```
 
-- EmonCMS Serial 통신 연동설정
+- EmonHub Direct Serial 통신 연동설정
+
+
 ```
+** /etc/emonhub/emonhub.conf
+
+[interfacers]
+  [[SerialDirect]]
+     Type = EmonHubSerialInterfacer
+      [[[init_settings]]]
+           com_port = /dev/ttyUSB0        # or /dev/ttyAMA0 or/dev/ttyACM0 etc
+           com_baud = 115200              # to match the baud of the connected device
+      [[[runtimesettings]]]
+           pubchannels = ToEmonCMS,
+
+
+[[emonCMS]]
+    Type = EmonHubEmoncmsHTTPInterfacer
+    [[[init_settings]]]
+    [[[runtimesettings]]]
+        url = http://localhost/emoncms
+        apikey = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        pubchannels = ToEmonCMS,           # 모르겠음
+        subchannels = ToEmonCMS,           # URL 전송  publish
+
+
+  [[10]]							       # 노드번호
+    nodemane = energymodule
+    [[[rx]]]
+      #names = Voltage, Current, Power, Today, Yesterday, Total
+      names = voltage, current, power1, power2, power3, power4
+      datacode = 0
+      scales = 1,1,1,1,1,1
+      units = V,A,W,W,W,W
+```
+
+
+```
+-Tasmota Rule
+
 ON tele-ENERGY DO serialsend4 10 %Var1% %Var2% %Var3% %Var4% %Var5% %Var6% ENDON
 ON tele-ENERGY DO SerialSend3 \r\n ENDON
 ```
+
 
 
 - 전송주기 설정 - Telemetry period (단위: 초, 사용범위: 10~300) - 여기서는 EmonCMS서버로 전송하는 주기임
