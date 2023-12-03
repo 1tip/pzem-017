@@ -99,7 +99,7 @@ Rule1 on
         subchannels = ToEmonCMS,           # URL 전송  publish
 
 
-  [[10]]							       # 노드번호
+  [[10]]                                   # NodeID
     nodemane = energymodule
     [[[rx]]]
       #names = Voltage, Current, Power, Today, Yesterday, Total
@@ -111,8 +111,13 @@ Rule1 on
 
 
 ```
--Tasmota Rule
+** Tasmota Rule   (NodeID = 10)
 
+<Not Working>
+ON tele-ENERGY DO serialsend 10 %Var1% %Var2% %Var3% %Var4% %Var5% %Var6% ENDON
+
+
+<Working>
 ON tele-ENERGY DO serialsend4 10 %Var1% %Var2% %Var3% %Var4% %Var5% %Var6% ENDON
 ON tele-ENERGY DO SerialSend3 \r\n ENDON
 ```
