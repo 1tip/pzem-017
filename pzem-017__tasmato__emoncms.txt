@@ -48,10 +48,10 @@ Rule1 on
 
 
 Resolution
-voltres 2			전압값 소수점2자리까지 표시
-energyres 0..5			maximum number of decimal places
-freqres 0..3 			frequency sensor resolution
-voltres 0..3			voltage sensor resolution
+ voltres 2			전압값 소수점2자리까지 표시
+ energyres 0..5			maximum number of decimal places
+ freqres 0..3 			frequency sensor resolution
+ voltres 0..3			voltage sensor resolution
 
 
 
@@ -67,6 +67,8 @@ NTP
  
  
  
-EmonHub Direct Serial
-ON tele-ENERGY DO serialsend4 10 %Var1% %Var2% %Var3% %Var4% %Var5% %Var6% ENDON
-ON tele-ENERGY DO SerialSend3 \r\n ENDON
+Rule for EmonHub Direct Serial
+ ON tele-ENERGY DO serialsend4 10 %Var1% %Var2% %Var3% %Var4% %Var5% %Var6% ENDON
+ ON tele-ENERGY DO SerialSend3 \r\n ENDON
+
+
