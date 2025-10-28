@@ -9,7 +9,7 @@
 
 
 
-### 결선하기(Wiring) - without RS485 Module
+### 결선하기(Wiring) - remove RS485 ic and wiring
 
 - RS485칩 제거 및 MCU에 Rx, Tx 직결작업 (3.3V TTL)
 <img src="./Wiring_1.PNG">
